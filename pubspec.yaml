@@ -1,5 +1,5 @@
 name: animeflv
-description: A dart api for animeflv.
+description: An animeflv.net api that allows you to get anime info, episode servers and episode download links.
 version: 0.0.1
 homepage: https://github.com/raulidg33/animeflv.dart
 
@@ -11,6 +11,3 @@ dependencies:
   html: ^0.15.0
   quiver: ^3.0.1+1
   beautiful_soup_dart: ^0.2.0
-
-dev_dependencies:
-  test: ^1.16.0

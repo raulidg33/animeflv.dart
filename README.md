@@ -11,7 +11,9 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
-# This package is an API for the anime website animeflv.net which has spanish sub anime.
+# AnimeFlv dart API
+
+## An animeflv.net api that allows you to search for anime, get anime info, episode servers and episode download links.
 
 ## Features
 
@@ -26,11 +28,13 @@ and the Flutter guide for
 ```dart
 import 'package:animeflv/animeflv.dart';
 
-var animeflv = AnimeFlv();
+// Initialize instance of AnimeFlv
+  var animeflv = AnimeFlv();
 ```
 ### Search for an anime, i.e. horimiya
 ```dart
-var search_result = await animeflv.search(query: 'horimiya');
+// Search with query horimiya
+var search_result = await animeflv.search('horimiya');
 print(search_result);
 ```
 Output
@@ -49,9 +53,12 @@ Output
 ```
 ### Get horimiya info
 ```dart
+// save first result as horimiya
 var horimiya = search_result[0];
-var animeinfo = await animeflv.getAnimeInfo(id: horimiya['id']);
-print(animeinfo);
+
+// get the info of the anime horimiya
+var horimiyaInfo = await animeflv.getAnimeInfo(horimiya['id']);
+print(horimiyaInfo);
 ```
 Output:
 ```json
@@ -90,8 +97,11 @@ Output:
 ```
 ### Get the servers for an anime episode. i.e. 1st episode of horimiya (Not all servers will have same atributes, but they'll all have server and either url or code)
 ```dart
-var horimiyaFirstEpisode = horimiya['episodes'][0];
-var servers = await animeflv.getVideoServers(id: horimiyaFirstEpisode['id']);
+// save first epidose of horimiya as horimiyaFirstEpisode
+var horimiyaFirstEpisode = horimiyaInfo['episodes'][0];
+
+// get the servers of the first episode of horimiya
+var servers = await animeflv.getVideoServers(horimiyaFirstEpisode['id']);
 print(servers);
 ```
 OUTPUT:
@@ -125,7 +135,8 @@ OUTPUT:
 ```
 ### Get the download links for an anime episode. i.e 1st episode of horimiya
 ```dart
-var downloadLinks = await animeflv.DownloadLinksByEpisode(id: horimiyaFirstEpisode['id']);
+// get the download links of the first episode of horimiya
+var downloadLinks = await animeflv.downloadLinksByEpisodeId(horimiyaFirstEpisode['id']);
 print(downloadLinks);
 ```
 OUTPUT:
