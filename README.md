@@ -92,7 +92,7 @@ Output:
 ```dart
 var horimiyaFirstEpisode = horimiya['episodes'][0];
 var servers = await animeflv.getVideoServers(id: horimiyaFirstEpisode['id']);
-print(servers)
+print(servers);
 ```
 OUTPUT:
 ```json
@@ -126,7 +126,7 @@ OUTPUT:
 ### Get the download links for an anime episode. i.e 1st episode of horimiya
 ```dart
 var downloadLinks = await animeflv.DownloadLinksByEpisode(id: horimiyaFirstEpisode['id']);
-print(downloadLinks)
+print(downloadLinks);
 ```
 OUTPUT:
 ```json
