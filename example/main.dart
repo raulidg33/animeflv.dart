@@ -36,6 +36,7 @@ void main() async {
   print('\nServers found: \n$servers\n');
 
   // get the download links of the first episode of horimiya
-  var downloadLinks = await animeflv.downloadLinksByEpisodeId(horimiyaFirstEpisode['id']);
+  var downloadLinks =
+      await animeflv.downloadLinksByEpisodeId(horimiyaFirstEpisode['id']);
   print('\nDownload links: \n$downloadLinks\n');
 }
