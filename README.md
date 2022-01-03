@@ -42,8 +42,7 @@ Output
         "poster": "https://animeflv.net/uploads/animes/covers/3406.jpg", 
         "banner": "https://animeflv.net/uploads/animes/banners/3406.jpg", 
         "type": "Anime", 
-        "synopsis": "Aunque admirada en la escuela por su amabilidad y destreza académica, la estudiante de preparatoria Kyouko Hori ha estado escondiendo otro lado de ella. Con sus padres a menudo fuera de casa debido al trabajo, Hori tiene que cuidar de su hermano menor y hacer las tareas del hogar, sin tener tiempo para socializar fuera de la escuela. 
-        Mientras t...", 
+        "synopsis": "Aunque admirada en la escuela por su amabilidad y destreza académica, la estudiante de preparatoria Kyouko Hori ha estado escondiendo otro lado de ella. Con sus padres a menudo fuera de casa debido al trabajo, Hori tiene que cuidar de su hermano menor y hacer las tareas del hogar, sin tener tiempo para socializar fuera de la escuela. \n        Mientras t...", 
         "rating": "4.7",
     }
 ]
@@ -61,9 +60,7 @@ Output:
     "title": "Horimiya", 
     "poster": "https://animeflv.net/uploads/animes/covers/3406.jpg", 
     "banner": "https://animeflv.net/uploads/animes/banners/3406.jpg", 
-    "synopsis": "Aunque admirada en la escuela por su amabilidad y destreza académica, la estudiante de preparatoria Kyouko Hori ha estado escondiendo otro lado de ella. Con sus padres a menudo fuera de casa debido al trabajo, Hori tiene que cuidar de su hermano menor y hacer las tareas del hogar, sin tener tiempo para socializar fuera de la escuela.
-    Mientras tanto, Izumi Miyamura es visto como un inquietante otaku que usa anteojos. Sin embargo, en realidad es una persona amable e inepta para estudiar. Además, tiene nueve piercings escondidos detrás de su largo cabello, y un tatuaje a lo largo de su espalda y hombro izquierdo.
-    Por pura casualidad, Hori y Miyamura se cruzan fuera de la escuela, ninguno luciendo como el otro lo esperaría. Estos polos aparentemente opuestos se convierten en amigos, compartiendo un lado que nunca le han mostrado a nadie.", 
+    "synopsis": "Aunque admirada en la escuela por su amabilidad y destreza académica, la estudiante de preparatoria Kyouko Hori ha estado escondiendo otro lado de ella. Con sus padres a menudo fuera de casa debido al trabajo, Hori tiene que cuidar de su hermano menor y hacer las tareas del hogar, sin tener tiempo para socializar fuera de la escuela.\n    Mientras tanto, Izumi Miyamura es visto como un inquietante otaku que usa anteojos. Sin embargo, en realidad es una persona amable e inepta para estudiar. Además, tiene nueve piercings escondidos detrás de su largo cabello, y un tatuaje a lo largo de su espalda y hombro izquierdo.\n    Por pura casualidad, Hori y Miyamura se cruzan fuera de la escuela, ninguno luciendo como el otro lo esperaría. Estos polos aparentemente opuestos se convierten en amigos, compartiendo un lado que nunca le han mostrado a nadie.", 
     "rating": "4.7", 
     "debut": "Finalizado", 
     "type": "Anime", 
@@ -79,7 +76,7 @@ Output:
             "id": "horimiya-2", 
             "imagePreview": "https://cdn.animeflv.net/screenshots/3406/2/th_3.jpg"
         }
-        ...
+        "..."
 
         {
         
@@ -117,7 +114,7 @@ OUTPUT:
         "code": "https://www.yourupload.com/embed/BjjGnSUJ68q0"
     },
 
-    ...
+    "..."
 
     {
         "server": "Stape", 
@@ -143,7 +140,7 @@ OUTPUT:
         "url": "https://www102.zippyshare.com/d/Qhpk3cCA/955113/3406_1.mp4"
     }, 
     {
-        "server": Stape, 
+        "server": "Stape", 
         "url": "https://streamtape.com/v/BP4zD44wWxFydZa/"
     }
 ]
