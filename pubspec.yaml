@@ -1,0 +1,16 @@
+name: animeflv
+description: A dart api for animeflv.
+version: 0.0.1
+homepage: https://github.com/raulidg33/animeflv.dart
+
+environment:
+  sdk: ">=2.14.0 <3.0.0"
+
+dependencies:
+  http: ^0.13.4
+  html: ^0.15.0
+  quiver: ^3.0.1+1
+  beautiful_soup_dart: ^0.2.0
+
+dev_dependencies:
+  test: ^1.16.0
