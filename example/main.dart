@@ -7,15 +7,15 @@ void main() async {
 
   // get last episodes uploaded to animeflv
   var lastEpisodes = await animeflv.getLastEpisodes();
-  print('\nLast Episodes: \n${json.encode(lastEpisodes)}\n');
+  print('\nLast Episodes: \n$lastEpisodes\n');
 
   // get last animes uploaded to animeflv
   var lastAnimes = await animeflv.getLastAddedAnimes();
-  print('\nLast Animes: \n${json.encode(lastAnimes)}\n');
+  print('\nLast Animes: \n$lastAnimes\n');
 
   // get on air animes on animeflv
   var onAirAnimes = await animeflv.getOnAirAnimes();
-  print('\nOn air animes: \n${json.encode(onAirAnimes)}\n');
+  print('\nOn air animes: \n$onAirAnimes\n');
 
   // Search with query horimiya
   var searchResult = await animeflv.search('horimiya');

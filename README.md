@@ -45,13 +45,13 @@ lastEpisodes:
 [
     {
         "anime":"Saihate no Paladin",
-        "episode":"12","id":"/saihate-no-paladin-12",
+        "episode":"12","id":"saihate-no-paladin-12",
         "imagePreview":"https://animeflv.net/uploads/animes/thumbs/3541.jpg"
     },
     {
         "anime":"Kimetsu no Yaiba: Yuukaku-hen",
         "episode":"5",
-        "id":"/kimetsu-no-yaiba-yuukakuhen-5",
+        "id":"kimetsu-no-yaiba-yuukakuhen-5",
         "imagePreview":"https://animeflv.net/uploads/animes/thumbs/3554.jpg"
     },
 
@@ -59,7 +59,7 @@ lastEpisodes:
     {
         "anime":"86 2nd Season",
         "episode":"10",
-        "id":"/86-2nd-season-10",
+        "id":"86-2nd-season-10",
         "imagePreview":"https://animeflv.net/uploads/animes/thumbs/3520.jpg"
     }
 ]

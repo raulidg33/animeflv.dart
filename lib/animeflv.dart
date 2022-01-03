@@ -29,7 +29,7 @@ class AnimeFlv {
               .find('', selector: '.Capi')
               ?.string
               .replaceAll('Episodio ', ''),
-          'id': episode['href']?.split('ver')[1],
+          'id': episode['href']?.split('ver/')[1],
           'imagePreview':
               '$BASE_URL${episode.find('', selector: '.Image img')?['src']}'
         });
