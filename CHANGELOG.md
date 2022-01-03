@@ -1,6 +1,12 @@
-## 0.0.1
+## 0.0.2
+### New features
+* Get last added episodes
+* Get last added animes
+* Get on air animes
 
-* Search for anime
-* Fetch anime info
-* Fetch episode servers
-* Fetch episode download links
+## 0.0.1
+### Features
+* Search anime
+* Get anime info (includes episodes)
+* Get episode servers
+* Get episode download links

@@ -1,29 +1,41 @@
 import 'package:animeflv/animeflv.dart';
+import 'dart:convert';
 
 void main() async {
   // Initialize instance of AnimeFlv
   var animeflv = AnimeFlv();
 
+  // get last episodes uploaded to animeflv
+  var lastEpisodes = await animeflv.getLastEpisodes();
+  print('\nLast Episodes: \n${json.encode(lastEpisodes)}\n');
+
+  // get last animes uploaded to animeflv
+  var lastAnimes = await animeflv.getLastAddedAnimes();
+  print('\nLast Animes: \n${json.encode(lastAnimes)}\n');
+
+  // get on air animes on animeflv
+  var onAirAnimes = await animeflv.getOnAirAnimes();
+  print('\nOn air animes: \n${json.encode(onAirAnimes)}\n');
+
   // Search with query horimiya
-  var search_result = await animeflv.search('horimiya');
-  print(search_result);
+  var searchResult = await animeflv.search('horimiya');
+  print('\nSearch results for horimiya: \n$searchResult\n');
 
   // save first result as horimiya
-  var horimiya = search_result[0];
+  var horimiya = searchResult[0];
 
   // get the info of the anime horimiya
   var horimiyaInfo = await animeflv.getAnimeInfo(horimiya['id']);
-  print(horimiyaInfo);
+  print('\nInfo of horimiya: \n$horimiyaInfo\n');
 
   // save first epidose of horimiya as horimiyaFirstEpisode
   var horimiyaFirstEpisode = horimiyaInfo['episodes'][0];
 
   // get the servers of the first episode of horimiya
   var servers = await animeflv.getVideoServers(horimiyaFirstEpisode['id']);
-  print(servers);
+  print('\nServers found: \n$servers\n');
 
   // get the download links of the first episode of horimiya
-  var downloadLinks =
-      await animeflv.downloadLinksByEpisodeId(horimiyaFirstEpisode['id']);
-  print(downloadLinks);
+  var downloadLinks = await animeflv.downloadLinksByEpisodeId(horimiyaFirstEpisode['id']);
+  print('\nDownload links: \n$downloadLinks\n');
 }
