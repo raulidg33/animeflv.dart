@@ -1,6 +1,10 @@
+## 0.0.6
+### New features
+* Link resolver for fembed server.
+
 ## 0.0.5
 ### New features
-* Link resolver for StreamSB option.
+* Link resolver for StreamSB server.
 ### Changes
 * OnAirAnimes is now AiringAnimes
 

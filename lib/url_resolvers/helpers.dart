@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:http/http.dart' as http;
 import '../globals.dart';
 
@@ -94,4 +95,18 @@ Map<String, String> getHidden(String html) {
   } catch (e) {
     return {};
   }
+}
+
+String randUA() {
+  const uAS = [
+    IE_USER_AGENT,
+    FF_USER_AGENT,
+    OPERA_USER_AGENT,
+    IOS_USER_AGENT,
+    EDGE_USER_AGENT,
+    CHROME_USER_AGENT,
+    SAFARI_USER_AGENT,
+    ANDROID_USER_AGENT
+  ];
+  return uAS[Random().nextInt(8)];
 }

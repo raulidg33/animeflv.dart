@@ -1,4 +1,3 @@
-import 'package:animeflv/globals.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import './helpers.dart';
@@ -13,13 +12,13 @@ class StreamSBResolver {
     caseSensitive: false,
   );
 
-  Future<String> resolveUrl(String url) async {
+  Future<List> resolveUrl(String url) async {
     final client = http.Client();
     url = url.replaceAll('/e/', '/d/');
     String host = Uri.parse(url).host;
     String rurl = 'https://$host/';
     final headers = {
-      'User-Agent': FF_USER_AGENT.toString(),
+      'User-Agent': randUA(),
       'Referer': rurl,
     };
     final res = await client.get(Uri.parse(url));
@@ -51,11 +50,16 @@ class StreamSBResolver {
         if (res3.statusCode == 200) {
           String mediaUrl =
               _urlRegex.firstMatch(res3.body)?.group(1).toString() ?? '';
-          return mediaUrl;
+          return [
+            {
+              'label': '720p',
+              'file': mediaUrl,
+            }
+          ];
         }
       }
     }
 
-    return '';
+    return [];
   }
 }
