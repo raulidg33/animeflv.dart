@@ -58,11 +58,10 @@ class AnimeFlv {
         lastAnimes.add({
           'id': id?.substring(1, id.length),
           'title': anime.find('', selector: 'a h3')?.string,
-          'poster': anime.find('', selector: '.Image figure img')?['src'],
-          'banner': anime
-              .find('', selector: '.Image figure img')?['src']
-              ?.replaceAll('covers', 'banners')
-              .trim(),
+          'poster':
+              '$BASE_URL${anime.find('', selector: '.Image figure img')?['src']}',
+          'banner':
+              '$BASE_URL${anime.find('', selector: '.Image figure img')?['src']?.replaceAll('covers', 'banners').trim()}',
           'type':
               anime.find('', selector: 'div.Description p span.Type')?.string,
           'synopsis':
