@@ -78,19 +78,19 @@ class AnimeFlv {
 
   // =================================================================================================================================================
   // function to get on air animes
-  Future<List> getOnAirAnimes() async {
+  Future<List> getAiringAnimes() async {
     // get request to base animeflv url
     final res = await http.Client().get(Uri.parse(BASE_URL));
     if (res.statusCode == 200) {
       // get html and look for last animes list
       final body = res.body.toString();
       final soup = BeautifulSoup(body);
-      var onAirAnimes = [];
-      final onAirAnimesElements = soup.findAll('', selector: '.ListSdbr li');
+      var airingAnimes = [];
+      final airingAnimesElements = soup.findAll('', selector: '.ListSdbr li');
       // for every anime found we save some data
-      for (var anime in onAirAnimesElements) {
+      for (var anime in airingAnimesElements) {
         final id = anime.a?['href'];
-        onAirAnimes.add({
+        airingAnimes.add({
           'id': id?.substring(1, id.length),
           'title': anime.a?.string
               .replaceAll('${anime.find('', selector: '.Type')!.string}', '')
@@ -99,7 +99,7 @@ class AnimeFlv {
         });
       }
       // return list with on air animes
-      return onAirAnimes;
+      return airingAnimes;
     }
     return [];
   }

@@ -14,8 +14,8 @@ void main() async {
   print('\nLast Animes: \n$lastAnimes\n');
 
   // get on air animes on animeflv
-  var onAirAnimes = await animeflv.getOnAirAnimes();
-  print('\nOn air animes: \n$onAirAnimes\n');
+  var airingAnimes = await animeflv.getAiringAnimes();
+  print('\nOn air animes: \n$airingAnimes\n');
 
   // Search with query horimiya
   var searchResult = await animeflv.search('horimiya');

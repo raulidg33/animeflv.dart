@@ -108,9 +108,9 @@ lastAnimes:
 ### Get on air anime
 ```dart
 // get on air animes on animeflv
-var onAirAnimes = await animeflv.getOnAirAnimes();
+var airingAnimes = await animeflv.getAiringAnimes();
 ```
-onAirAnimes:
+airingAnimes:
 ```json
 [
     {
