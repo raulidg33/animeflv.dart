@@ -19,7 +19,7 @@ and the Flutter guide for
 
 * Get last added episodes
 * Get last added animes
-* Get on air animes
+* Get airing
 * Search anime
 * Get anime info (includes episodes)
 * Get episode servers
@@ -105,9 +105,9 @@ lastAnimes:
     }
 ]
 ```
-### Get on air anime
+### Get airing anime
 ```dart
-// get on air animes on animeflv
+// get airing animes on animeflv
 var airingAnimes = await animeflv.getAiringAnimes();
 ```
 airingAnimes:
