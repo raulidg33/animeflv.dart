@@ -1,6 +1,6 @@
 name: animeflv
 description: An animeflv.net api that allows you to retrieve different data from the animeflv catalog, and use it inside your own app or code using dart.
-version: 0.0.5
+version: 0.0.6
 homepage: https://github.com/raulidg33/animeflv.dart
 
 environment:
