@@ -3,7 +3,7 @@ import './helpers.dart';
 import 'dart:convert';
 
 class FembedResolver {
-  Future<List> resolverUrl(webUrl) async {
+  Future<List> resolveUrl(webUrl) async {
     http.Client client = http.Client();
     final String host = Uri.parse(webUrl).host;
     final String mediaId = List.from(webUrl.split('/').reversed)[0];
