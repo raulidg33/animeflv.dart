@@ -308,21 +308,23 @@ class AnimeFlv {
       var episodes = [];
 
       try {
-        // for every script found in the html
-        for (var script in soup.findAll('script')) {
-          final contents = script.toString();
-          // if the current script is the one with the episodes then we save the episode data
-          if (contents.contains('var anime_info')) {
-            final animeInfo =
-                contents.split('var anime_info = ')[1].split(';')[0];
-            infoIds.add(json.decode(animeInfo));
+        final data = RegExp(r'var episodes = (.*?);', caseSensitive: false)
+            .firstMatch(soup.body.toString())
+            ?.group(1);
+
+        if (data != null) {
+          for (var episodeData in json.decode(data)) {
+            episodesData.add([episodeData[0], episodeData[1]]);
           }
-          if (contents.contains('var episodes = [')) {
-            final data = contents.split('var episodes = ')[1].split(';')[0];
-            for (var episodeData in json.decode(data)) {
-              episodesData.add([episodeData[0], episodeData[1]]);
-            }
-          }
+        }
+
+        final animeInfo =
+            RegExp(r'var anime_info = (.".*?",".*?".);', caseSensitive: false)
+                .firstMatch(body)
+                ?.group(1);
+
+        if (animeInfo != null) {
+          infoIds.add(json.decode(animeInfo));
         }
         // now we convert this data to a map with the episode, the episodeId and the preview
         final animeId = infoIds[0][2];
@@ -336,6 +338,7 @@ class AnimeFlv {
           });
         }
       } catch (e) {}
+
       // we return the episodes and the aditional fetched info
       return [episodes, genres, extraInfo];
     }

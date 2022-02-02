@@ -1,5 +1,4 @@
 import 'package:animeflv/animeflv.dart';
-import 'dart:convert';
 
 void main() async {
   // Initialize instance of AnimeFlv
