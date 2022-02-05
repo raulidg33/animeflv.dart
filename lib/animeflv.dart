@@ -20,19 +20,14 @@ class AnimeFlv {
       final body = res.body.toString();
       final soup = BeautifulSoup(body);
       var lastEpisodes = [];
-      final lastEpisodesElements =
-          soup.findAll('', selector: '.ListEpisodios li a.fa-play');
+      final lastEpisodesElements = soup.findAll('', selector: '.ListEpisodios li a.fa-play');
       // for every episode found we save some data
       for (var episode in lastEpisodesElements) {
         lastEpisodes.add({
           'anime': episode.find('', selector: '.Title')?.string,
-          'episode': episode
-              .find('', selector: '.Capi')
-              ?.string
-              .replaceAll('Episodio ', ''),
+          'episode': episode.find('', selector: '.Capi')?.string.replaceAll('Episodio ', ''),
           'id': episode['href']?.split('ver/')[1],
-          'imagePreview':
-              '$BASE_URL${episode.find('', selector: '.Image img')?['src']}'
+          'imagePreview': '$BASE_URL${episode.find('', selector: '.Image img')?['src']}'
         });
       }
       // return last episodes found
@@ -51,24 +46,18 @@ class AnimeFlv {
       final body = res.body.toString();
       final soup = BeautifulSoup(body);
       var lastAnimes = [];
-      final lastAnimesElements =
-          soup.findAll('', selector: '.ListAnimes article.Anime');
+      final lastAnimesElements = soup.findAll('', selector: '.ListAnimes article.Anime');
       // for every anime found we save some data
       for (var anime in lastAnimesElements) {
         final id = anime.a?['href'];
         lastAnimes.add({
           'id': id?.substring(1, id.length),
           'title': anime.find('', selector: 'a h3')?.string,
-          'poster':
-              '$BASE_URL${anime.find('', selector: '.Image figure img')?['src']}',
-          'banner':
-              '$BASE_URL${anime.find('', selector: '.Image figure img')?['src']?.replaceAll('covers', 'banners').trim()}',
-          'type':
-              anime.find('', selector: 'div.Description p span.Type')?.string,
-          'synopsis':
-              anime.findAll('', selector: 'div.Description p')[1].string.trim(),
-          'rating':
-              anime.find('', selector: 'div.Description p span.Vts')?.string,
+          'poster': '$BASE_URL${anime.find('', selector: '.Image figure img')?['src']}',
+          'banner': '$BASE_URL${anime.find('', selector: '.Image figure img')?['src']?.replaceAll('covers', 'banners').trim()}',
+          'type': anime.find('', selector: 'div.Description p span.Type')?.string,
+          'synopsis': anime.findAll('', selector: 'div.Description p')[1].string.trim(),
+          'rating': anime.find('', selector: 'div.Description p span.Vts')?.string,
         });
       }
       // return last animes found
@@ -93,9 +82,7 @@ class AnimeFlv {
         final id = anime.a?['href'];
         airingAnimes.add({
           'id': id?.substring(1, id.length),
-          'title': anime.a?.string
-              .replaceAll('${anime.find('', selector: '.Type')!.string}', '')
-              .trim(),
+          'title': anime.a?.string.replaceAll('${anime.find('', selector: '.Type')!.string}', '').trim(),
           'type': anime.find('', selector: '.Type')?.string,
         });
       }
@@ -125,10 +112,10 @@ class AnimeFlv {
           if (row['FORMATO'].string == 'SUB') {
             ret.add({
               'server': row['SERVIDOR'].string,
-              'url': row['DESCARGAR'].a['href'].toString().replaceAllMapped(
-                  RegExp(
-                      r'^http[s]?://ouo.io/[A-Za-z0-9]+/[A-Za-z0-9]+\?[A-Za-z0-9]+='),
-                  (match) => '"${match.group}"')
+              'url': row['DESCARGAR']
+                  .a['href']
+                  .toString()
+                  .replaceAllMapped(RegExp(r'^http[s]?://ouo.io/[A-Za-z0-9]+/[A-Za-z0-9]+\?[A-Za-z0-9]+='), (match) => '"${match.group}"')
             });
           }
         }
@@ -144,27 +131,11 @@ class AnimeFlv {
               for (var script in scripts) {
                 final content = script.toString();
                 if (content.contains('var n = ')) {
-                  final n = int.parse(content
-                          .split('\n')[1]
-                          .trim()
-                          .split('var n = ')[1]
-                          .split('%')[0]) %
-                      2;
-                  final b = int.parse(content
-                          .split('\n')[2]
-                          .trim()
-                          .split('var b = ')[1]
-                          .split('%')[0]) %
-                      3;
-                  final z = int.parse(content
-                      .split('\n')[3]
-                      .trim()
-                      .split('var z = ')[1]
-                      .split(';')[0]);
+                  final n = int.parse(content.split('\n')[1].trim().split('var n = ')[1].split('%')[0]) % 2;
+                  final b = int.parse(content.split('\n')[2].trim().split('var b = ')[1].split('%')[0]) % 3;
+                  final z = int.parse(content.split('\n')[3].trim().split('var z = ')[1].split(';')[0]);
                   final title = content.split('\n')[4].trim().split('"')[3];
-                  final serverurl = server['url']
-                      .replaceAll('v', 'd')
-                      .replaceAll('file.html', '${n + b + z - 3}$title');
+                  final serverurl = server['url'].replaceAll('v', 'd').replaceAll('file.html', '${n + b + z - 3}$title');
                   server['url'] = serverurl;
                 }
               }
@@ -191,27 +162,16 @@ class AnimeFlv {
       var ret = [];
       // for each of the animes found we'll save some data
       for (var element in elements) {
-        var id =
-            element.find('', selector: 'div.Description a.Button')?['href'];
+        var id = element.find('', selector: 'div.Description a.Button')?['href'];
         try {
           ret.add({
             'id': id?.substring(1, id.length),
             'title': element.find('', selector: 'a h3')?.string,
             'poster': element.find('', selector: '.Image figure img')?['src'],
-            'banner': element
-                .find('', selector: '.Image figure img')?['src']
-                ?.replaceAll('covers', 'banners')
-                .trim(),
-            'type': element
-                .find('', selector: 'div.Description p span.Type')
-                ?.string,
-            'synopsis': element
-                .findAll('', selector: 'div.Description p')[1]
-                .string
-                .trim(),
-            'rating': element
-                .find('', selector: 'div.Description p span.Vts')
-                ?.string,
+            'banner': element.find('', selector: '.Image figure img')?['src']?.replaceAll('covers', 'banners').trim(),
+            'type': element.find('', selector: 'div.Description p span.Type')?.string,
+            'synopsis': element.findAll('', selector: 'div.Description p')[1].string.trim(),
+            'rating': element.find('', selector: 'div.Description p span.Vts')?.string,
           });
         } catch (e) {}
       }
@@ -225,8 +185,7 @@ class AnimeFlv {
   // function that gives you the servers of the episode with id = given id
   Future<List> getVideoServers(String episodeId) async {
     // get request with the anime url using the given id
-    final res =
-        await http.Client().get(Uri.parse('$ANIME_VIDEO_URL$episodeId'));
+    final res = await http.Client().get(Uri.parse('$ANIME_VIDEO_URL$episodeId'));
     if (res.statusCode == 200) {
       // get html and look for the scripts as animeflv saves the servers in one
       final body = res.body.toString();
@@ -269,6 +228,7 @@ class AnimeFlv {
       'type': extraInfo['type'],
       'airing': extraInfo['airing'],
       'nextEpisode': extraInfo['nextEpisode'],
+      'relatedAnime': extraInfo['relatedAnime'],
       'genres': genres,
       'episodes': List.from(episodes.reversed),
     };
@@ -287,23 +247,30 @@ class AnimeFlv {
       // saving some extra info about the anime that is not about the episodes
       Map extraInfo = {
         'title': soup.find('', selector: 'h1.Title')?.string,
-        'poster':
-            '$BASE_URL${soup.find("", selector: "div.Image figure img")?["src"]}',
+        'poster': '$BASE_URL${soup.find("", selector: "div.Image figure img")?["src"]}',
         'synopsis': soup.find('', selector: 'div.Description p')?.string.trim(),
         'rating': soup.find('', selector: 'span#votes_prmd')?.string,
         'debut': soup.find('', selector: 'p.AnmStts')?.string,
         'type': soup.find('', selector: 'span.Type')?.string,
         'airing': false,
         'nextEpisode': '',
+        'relatedAnime': soup
+            .findAll('', selector: '.ListAnmRel li')
+            .map(
+              ((e) => {
+                    'id': e.a?.attributes['href']?.substring(1),
+                    'title': e.a?.text,
+                    'relation': e.text.split('(').reversed.first.replaceAll(')', ''),
+                  }),
+            )
+            .toList()
       };
-      extraInfo['banner'] =
-          extraInfo['poster']?.replaceAll('covers', 'banners');
+      extraInfo['banner'] = extraInfo['poster']?.replaceAll('covers', 'banners');
       // getting the genres of the anime
       var genres = [];
       final elements = soup.findAll('', selector: '.Nvgnrs a');
       for (var element in elements) {
-        if (element['href']!.contains('='))
-          genres.add(element['href']?.split('=')[1]);
+        if (element['href']!.contains('=')) genres.add(element['href']?.split('=')[1]);
       }
 
       // fetch the episodes
@@ -312,9 +279,7 @@ class AnimeFlv {
       var episodes = [];
 
       try {
-        final data = RegExp(r'var episodes = (.*?);', caseSensitive: false)
-            .firstMatch(soup.body.toString())
-            ?.group(1);
+        final data = RegExp(r'var episodes = (.*?);', caseSensitive: false).firstMatch(soup.body.toString())?.group(1);
 
         if (data != null) {
           for (var episodeData in json.decode(data)) {
@@ -322,10 +287,7 @@ class AnimeFlv {
           }
         }
 
-        final animeInfo =
-            RegExp(r'var anime_info = (.".*?",".*?".);', caseSensitive: false)
-                .firstMatch(body)
-                ?.group(1);
+        final animeInfo = RegExp(r'var anime_info = (.".*?",".*?".);', caseSensitive: false).firstMatch(body)?.group(1);
 
         if (animeInfo != null) {
           infoIds.add(json.decode(animeInfo));
@@ -342,8 +304,7 @@ class AnimeFlv {
             'anime': extraInfo['title'],
             'episode': episodeData[0],
             'id': '$animeId-${episodeData[0]}',
-            'imagePreview':
-                '$BASE_EPISODE_IMG_URL${infoIds[0][0]}/${episodeData[0]}/th_3.jpg',
+            'imagePreview': '$BASE_EPISODE_IMG_URL${infoIds[0][0]}/${episodeData[0]}/th_3.jpg',
           });
         }
       } catch (e) {}
