@@ -65,8 +65,11 @@ class AnimeFlv {
               '$BASE_URL${anime.find('', selector: '.Image figure img')?['src']?.replaceAll('covers', 'banners').trim()}',
           'type':
               anime.find('', selector: 'div.Description p span.Type')?.string,
-          'synopsis':
-              anime.findAll('', selector: 'div.Description p')[1].string.trim(),
+          'synopsis': anime
+              .findAll('', selector: 'div.Description p')[1]
+              .string
+              .trim()
+              .replaceAll('<br/>', ''),
           'rating':
               anime.find('', selector: 'div.Description p span.Vts')?.string,
         });
@@ -208,7 +211,8 @@ class AnimeFlv {
             'synopsis': element
                 .findAll('', selector: 'div.Description p')[1]
                 .string
-                .trim(),
+                .trim()
+                .replaceAll('<br/>', ''),
             'rating': element
                 .find('', selector: 'div.Description p span.Vts')
                 ?.string,
@@ -290,7 +294,11 @@ class AnimeFlv {
         'title': soup.find('', selector: 'h1.Title')?.string,
         'poster':
             '$BASE_URL${soup.find("", selector: "div.Image figure img")?["src"]}',
-        'synopsis': soup.find('', selector: 'div.Description p')?.string.trim(),
+        'synopsis': soup
+            .find('', selector: 'div.Description p')
+            ?.string
+            .trim()
+            .replaceAll('<br/>', ''),
         'rating': soup.find('', selector: 'span#votes_prmd')?.string,
         'debut': soup.find('', selector: 'p.AnmStts')?.string,
         'type': soup.find('', selector: 'span.Type')?.string,
